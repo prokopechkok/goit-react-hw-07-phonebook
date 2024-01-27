@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/contactsSlice';
-import { nanoid } from '@reduxjs/toolkit';
+import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/operations';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -40,7 +39,6 @@ export const ContactForm = () => {
     dispatch(
       addContact({
         ...formData,
-        id: nanoid(5),
       })
     );
 
@@ -60,6 +58,7 @@ export const ContactForm = () => {
           placeholder="Enter name here"
           value={name}
           required
+          autoComplete="true"
         />
       </label>
       <label className={css.formInputLabel}>
@@ -72,6 +71,7 @@ export const ContactForm = () => {
           placeholder="Enter phonenumber here"
           value={number}
           required
+          autoComplete="true"
         />
       </label>
       <button className={css.addContactBtn} type="submit">
