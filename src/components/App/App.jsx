@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { ContactForm, ContactList, Filter } from 'components';
-import css from './App.module.css';
 import { fetchContacts } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
+import css from './App.module.css';
 
 export const App = () => {
   const dispatch = useDispatch();

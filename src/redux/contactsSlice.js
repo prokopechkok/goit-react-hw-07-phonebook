@@ -4,11 +4,11 @@ import { fetchContacts, addContact, deleteContact } from './operations';
 const handlePending = state => {
   state.contacts.isLoading = true;
 };
-
 const handleRejected = (state, action) => {
   state.contacts.isLoading = false;
   state.contacts.error = action.payload;
 };
+
 const initialState = {
   contacts: {
     contacts: [],
@@ -17,10 +17,10 @@ const initialState = {
   },
   filter: '',
 };
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-
   reducers: {
     setFilter(state, action) {
       state.filter = action.payload;
